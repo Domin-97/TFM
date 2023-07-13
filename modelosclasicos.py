@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -87,7 +81,6 @@ X_trainSquat, X_testSquat, y_trainSquat, y_testSquat = train_test_split(X, ySqua
 X_trainBench, X_testBench, y_trainBench, y_testBench = train_test_split(X, yBench, test_size=0.2, random_state=42)
 X_trainDeadlift, X_testDeadlift, y_trainDeadlift, y_testDeadlift = train_test_split(X, yDeadlift, test_size=0.2, random_state=42)
 
-sample_weightsSquat = class_weight.compute_sample_weight(class_weight='balanced', y=y_trainSquat)
 
 scaler = StandardScaler()
 
@@ -104,7 +97,7 @@ modelBench = LinearRegression(fit_intercept= False)
 modelDeadlift = LinearRegression(fit_intercept= False)
 
 # Entrenar el modelo
-modelSquat.fit(X_trainSquat, y_trainSquat,sample_weight=sample_weightsSquat)
+modelSquat.fit(X_trainSquat, y_trainSquat)
 
 # Realizar predicciones en el conjunto de prueba
 predSquat = modelSquat.predict(X_testSquat)
